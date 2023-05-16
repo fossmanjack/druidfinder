@@ -27,3 +27,4 @@
 - Inputting a new grove into the DB via the admin form should auto-generate those coordinates
 - Security needs should be minimal if calls are limited to localhost, right?
 - All of these data are public anyway, only the POST/PUT/DELETE verbs need restriction
+- "Loading" spinner for the list pane until the list is retrieved

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './css/localstyles.css';
-import { Map } from 'pigeon-maps';
+import { Map, Marker } from 'pigeon-maps';
 import { useState } from 'react';
 import {
 	Container,
@@ -9,10 +9,13 @@ import {
 	Col
 } from 'reactstrap';
 import GroveList from './components/GroveList.jsx';
+import { DEFAULTGROVES } from './data/DEFAULT';
 
 function App() {
-	const [ lat, setLat ] = useState(29.425191);
-	const [ long, setLong ] = useState(-98.494592);
+//	const [ lat, setLat ] = useState(29.425191);
+//	const [ long, setLong ] = useState(-98.494592);
+	const [ lat, setLat ] = useState(39.76);
+	const [ long, setLong ] = useState(-98.5);
 
 /*
 	return (
@@ -45,7 +48,15 @@ function App() {
 						<GroveList />
 					</Col>
 					<Col>
-						<Map defaultCenter={[ lat, long ]} defaultZoom={10}>
+						<Map defaultCenter={[ lat, long ]} defaultZoom={4}>
+							{
+								DEFAULTGROVES.map(grove =>
+									<Marker
+										width={50}
+										anchor={[ grove.coords.latitude, grove.coords.longitude ]}
+									/>
+								)
+							}
 						</Map>
 					</Col>
 				</Row>

@@ -16,6 +16,11 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ ],
 		updated: 1403931600000,
+		coords: {
+			latitude: 44.4583,
+			longitude: -93.1616,
+			altitude: 0,
+		},
 	},
 	{
 		name: 'All Worlds Grove',
@@ -34,6 +39,11 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ '992419c7-e4e6-452f-9bb2-87733014cfde' ],
 		updated: 1681150894322,
+		coords: {
+			latitude: 29.4597,
+			longitude: -98.6555,
+			altitude: 0,
+		},
 	},
 	{
 		name: 'Hazel Nut Grove',
@@ -52,6 +62,11 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ ],
 		updated: 1403931600000,
+		coords: {
+			latitude: 37.3393,
+			longitude: -121.895,
+			altitude: 0,
+		},
 	},
 	{
 		name: 'Tuatha de Danann Grove',
@@ -70,6 +85,11 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ ],
 		updated: 1403931600000,
+		coords: {
+			latitude: 37.6688,
+			longitude: -122.0808,
+			altitude: 0,
+		},
 	}
 ]
 
@@ -89,6 +109,11 @@ export const DEFAULTDRUIDS = [
 		web: 'https://moonbeam.town/@wraidd',
 		phone: '+1 (585) 708-9501',
 		updated: 1681150894322,
+		coords: {
+			latitude: 29.4241,
+			longitude: -98.4936,
+			altitude: 0,
+		},
 	},
 ]
 

@@ -1,17 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
 import './css/localstyles.css';
-import { Map, Marker } from 'pigeon-maps';
-import { useState, useEffect } from 'react';
-import {
-	Container,
-	Row,
-	Col
-} from 'react-bootstrap';
-import GroveList from './components/GroveList.jsx';
-import { DEFAULTGROVES } from './data/DEFAULT';
-import getDistance from './utils/getDistance';
+import Main from './components/Main';
+import { _Store } from './data/STORE';
+import { Provider } from 'react-redux';
 
+export default function App() {
+
+	return (
+		<Provider store={_Store}>
+			<div className='App'>
+				<Main />
+			</div>
+		</Provider>
+	);
+}
+
+
+/* Old code
 function App() {
 //	const [ lat, setLat ] = useState(29.425191);
 //	const [ long, setLong ] = useState(-98.494592);
@@ -23,31 +27,7 @@ function App() {
 
 	const resetGroveList = _ => setGroveList(DEFAULTGROVES);
 
-/*
-	const GroveMarker = ({ grove }) => {
-		console.log('GroveMarker: Grove with id', grove.id);
-		const org = grove.affiliation[0] ?? 'None';
-		const { latitude, longitude } = grove.coords;
 
-		let color;
-
-		switch(org) {
-			case 'AODA': color = 'green'; break;
-			case 'RDNA': color = 'yellow'; break;
-			case 'ADF': color = 'red'; break;
-			default: color = 'grey';
-		};
-
-		console.log('GroveMarker:', org, color, grove.coords);
-
-		return (
-			<Marker
-				width={30}
-				anchor={[ latitude, longitude ]}
-			/>
-		);
-	};
-*/
 	useEffect(_ => {
 		const sortList = [ ...groveList ];
 		for(const grove of sortList) {
@@ -63,7 +43,10 @@ function App() {
 
 	return (
 		<div className='App'>
+			<Main />
+		</div>
 			<Container fluid className='h-100'>
+
 				<Row className='h-100'>
 					<Col md={3}>
 						<GroveList />
@@ -110,7 +93,6 @@ function App() {
 
 export default App;
 
-/* Old code
 
 
 	return (
@@ -178,4 +160,28 @@ export default App;
 
 		</div>
 	);
+
+	const GroveMarker = ({ grove }) => {
+		console.log('GroveMarker: Grove with id', grove.id);
+		const org = grove.affiliation[0] ?? 'None';
+		const { latitude, longitude } = grove.coords;
+
+		let color;
+
+		switch(org) {
+			case 'AODA': color = 'green'; break;
+			case 'RDNA': color = 'yellow'; break;
+			case 'ADF': color = 'red'; break;
+			default: color = 'grey';
+		};
+
+		console.log('GroveMarker:', org, color, grove.coords);
+
+		return (
+			<Marker
+				width={30}
+				anchor={[ latitude, longitude ]}
+			/>
+		);
+	};
 */

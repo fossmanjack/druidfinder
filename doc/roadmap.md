@@ -30,3 +30,9 @@
 - All of these data are public anyway, only the POST/PUT/DELETE verbs need restriction
 - "Loading" spinner for the list pane until the list is retrieved
 - Grove list should be an accordion with basic info in the header and click-to-expand to see the full detail
+
+## Redux
+
+- Redux should fetch and hold the grove and druid lists using thunks
+- Redux should also hold current location data
+- Redux should also hold filtered lists of both of those in an array [ dataOb, distance ]

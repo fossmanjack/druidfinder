@@ -11,7 +11,12 @@ const grovelistSlice = createSlice({
 	initialState,
 	reducers: {
 		setGroveList: (gState, action) => gState.groveList = action.payload,
-		setFilteredList: (gState, action) => gState.filteredList = action.payload,
+		setFilteredList: (gState, action) => {
+			return {
+				...gState,
+				filteredList: action.payload
+			};
+		},
 
 	},
 	extraReducers: {
@@ -20,3 +25,8 @@ const grovelistSlice = createSlice({
 });
 
 export const grovelistReducer = grovelistSlice.reducer;
+
+export const {
+	setGroveList,
+	setFilteredList
+} = grovelistSlice.actions;

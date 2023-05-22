@@ -7,7 +7,7 @@ import {
 	Container,
 	Row,
 	Col
-} from 'reactstrap';
+} from 'react-bootstrap';
 import GroveList from './components/GroveList.jsx';
 import { DEFAULTGROVES } from './data/DEFAULT';
 
@@ -39,7 +39,31 @@ function App() {
 		</div>
 	);
 */
+	const GroveMarker = ({ grove }) => {
+		console.log('GroveMarker: Grove with id', grove.id);
+		const org = grove.affiliation[0] ?? 'None';
 
+		let color;
+
+		switch(org) {
+			case 'AODA': color = 'green'; break;
+			case 'RDNA': color = 'yellow'; break;
+			case 'ADF': color = 'red'; break;
+			default: color = 'grey';
+		};
+
+		console.log('GroveMarker:', org, color);
+
+		return (
+			<Marker
+				width={30}
+				anchor={[ grove.coords.latitude, grove.coords.longitude ]}
+				color={color}
+			/>
+		);
+	};
+
+/*
 	return (
 		<div className='App'>
 			<Container fluid className='h-100'>
@@ -56,6 +80,26 @@ function App() {
 										anchor={[ grove.coords.latitude, grove.coords.longitude ]}
 									/>
 								)
+							}
+						</Map>
+					</Col>
+				</Row>
+			</Container>
+
+		</div>
+	);
+*/
+	return (
+		<div className='App'>
+			<Container fluid className='h-100'>
+				<Row className='h-100'>
+					<Col md={3}>
+						<GroveList />
+					</Col>
+					<Col>
+						<Map defaultCenter={[ lat, long ]} defaultZoom={4}>
+							{
+								DEFAULTGROVES.map(grove => <GroveMarker grove={grove} />)
 							}
 						</Map>
 					</Col>

@@ -29,7 +29,7 @@ export const DEFAULTGROVES = [
 		city: 'San Antonio',
 		region: 'TX',
 		country: 'USA',
-		postCode: '',
+		postCode: '78251',
 		metro: 'San Antonio, TX',
 		founded: '2023',
 		membership: 3,

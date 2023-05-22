@@ -12,6 +12,7 @@
 - [ ] Clickable add-a-grove form
 - [ ] Header
 - [ ] Footer
+- [ ] SVGs for each org
 
 ## Back end
 
@@ -28,3 +29,4 @@
 - Security needs should be minimal if calls are limited to localhost, right?
 - All of these data are public anyway, only the POST/PUT/DELETE verbs need restriction
 - "Loading" spinner for the list pane until the list is retrieved
+- Grove list should be an accordion with basic info in the header and click-to-expand to see the full detail

@@ -22,7 +22,8 @@ export default function GroveCard({ grove }) {
 		phone,
 		officers,
 		coords,
-		updated
+		updated,
+		distance
 	} = grove;
 
 	console.log('Received grove with id:', id);
@@ -42,6 +43,11 @@ export default function GroveCard({ grove }) {
 					<Row>
 						<Col>
 							{city}, {region}, {postCode}, {country}
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							{distance}
 						</Col>
 					</Row>
 				</Container>

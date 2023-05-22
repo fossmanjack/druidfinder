@@ -33,11 +33,17 @@ export const DEFAULTGROVES = [
 		metro: 'San Antonio, TX',
 		founded: '2023',
 		membership: 3,
-		affiliation: [ 'RDNA', 'RDG' ],
+		affiliation: [ 'AODA', 'RDNA' ],
 		email: 'allworlds@proton.me',
 		web: 'https://allworldsgrove.org',
 		phone: '',
-		officers: [ '992419c7-e4e6-452f-9bb2-87733014cfde' ],
+		officers: [
+			{
+				id: '992419c7-e4e6-452f-9bb2-87733014cfde',
+				name: 'Wraidd Skywalker',
+				position: 'Organizer',
+			},
+		],
 		updated: 1681150894322,
 		coords: {
 			latitude: 29.4597,
@@ -90,7 +96,36 @@ export const DEFAULTGROVES = [
 			longitude: -122.0808,
 			altitude: 0,
 		},
-	}
+	},
+	{
+		name: 'Grove of the Other Gods, ADF',
+		id: 'groveOtherGods',
+		address: '13 Hardenberg St',
+		city: 'New Brunswick',
+		region: 'NJ',
+		country: 'USA',
+		postCode: '08901',
+		metro: '',
+		founded: '',
+		membership: '',
+		affiliation: [ 'ADF' ],
+		email: 'othergods.nj@gmail.com',
+		web: 'http://othergods.org',
+		phone: '+1 (908) 336-1022',
+		officers: [
+			{
+				name: 'Sharon Molnar',
+				id: 0,
+				position: 'Senior Druid',
+			},
+		],
+		updated: 1684779559148,
+		coords: {
+			latitude: 40.4970,
+			longitude: -74.4500,
+			altitude: 0,
+		},
+	},
 ]
 
 export const DEFAULTDRUIDS = [

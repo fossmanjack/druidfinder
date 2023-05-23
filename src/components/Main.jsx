@@ -1,56 +1,62 @@
+// Main.jsx
+// Container for app
+// P3Soft, 2023-05-20
+
+// Local styles
+import '../css/localstyles.css';
+
+// React and Redux
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
 	Col,
 	Container,
 	Row
 } from 'react-bootstrap';
+
+// Local components
 import GroveList from '../components/GroveList';
 import GroveMap from '../components/GroveMap';
-import '../css/localstyles.css';
+
+// Utils and slices
 import * as GL from '../slices/grovelistSlice';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import getDistance from '../utils/getDistance';
 
 export default function Main() {
 	const { groveList } = useSelector(S => S.grovelist);
-	const { myLat, myLng } = useSelector(S => S.mydata);
+	const { myCoords } = useSelector(S => S.mydata);
 	const { orgFilter } = useSelector(S => S.options);
 	const dispatch = useDispatch();
 
+	// We can't use the list data directly because we want to sort by distance
+	// and filter by org.  So we'll build our modified list here and store it
+	// in Redux so the map and list components have access.
+
 	const buildFilteredList = _ => {
 		console.log('Main: buildFilteredList');
-		const myCoords = { latitude: myLat, longitude: myLng };
 		const sortList = [ ];
 
 		for(const grove of groveList) {
-			sortList.push([ grove, getDistance(myCoords, grove.coords) ]);
+			const distance = getDistance(myCoords, grove.coords);
+			sortList.push([ grove, distance ]);
 		}
 
+		// Since affiliation is an array and the orgs included is also an array,
+		// we can filter out anything that doesn't share a match using array.some()
 		sortList.filter(data => data[0].affiliation.some(org => orgFilter.includes(org)));
+
+		// Sort by distance, ascending
 		sortList.sort((a, b) => a[1] - b[1]);
 
+		// Store the list built in Redux
 		dispatch(GL.setFilteredList(sortList));
 	};
 
-	useEffect(buildFilteredList(), [ myLat, myLng, orgFilter ]);
+	// Every time location or filters change, rebuild list
+	useEffect(_ => buildFilteredList(), [ myCoords, orgFilter ]);
 
-/*
-	useEffect(_ => {
-		buildFilteredList();
-		const myCoords = { latitude: myLat, longitude: myLng };
-		const sortList = [ ];
-		for(const grove of groveList) {
-			sortList.push([ grove, getDistance(myCoords, grove.coords) ]);
-		};
-
-		sortList.filter(
-
-		sortList.sort((a, b) => a[1] - b[1]);
-
-		dispatch(GL.setFilteredList(sortList));
-	}, []);
-*/
-	buildFilteredList();
+	// Initialize list -- should only be called on load
+	useEffect(_ => buildFilteredList(), []);
 
 	return (
 
@@ -66,3 +72,26 @@ export default function Main() {
 		</Container>
 	);
 }
+
+
+/* Old code
+
+
+	useEffect(_ => {
+		buildFilteredList();
+		const myCoords = { latitude: myLat, longitude: myLng };
+		const sortList = [ ];
+		for(const grove of groveList) {
+			sortList.push([ grove, getDistance(myCoords, grove.coords) ]);
+		};
+
+		sortList.filter(
+
+		sortList.sort((a, b) => a[1] - b[1]);
+
+		dispatch(GL.setFilteredList(sortList));
+	}, []);
+
+
+
+*/

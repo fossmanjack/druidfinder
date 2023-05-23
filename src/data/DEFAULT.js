@@ -7,7 +7,6 @@ export const DEFAULTGROVES = [
 		region: 'MN',
 		country: 'USA',
 		postCode: '',
-		metro: 'Minneapolis-St Paul, MN',
 		founded: '1963',
 		membership: 6,
 		affiliation: [ 'RDNA' ],
@@ -16,11 +15,7 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ ],
 		updated: 1403931600000,
-		coords: {
-			latitude: 44.4583,
-			longitude: -93.1616,
-			altitude: 0,
-		},
+		coords: [ 44.4583, -93.1616 ],
 	},
 	{
 		name: 'All Worlds Grove',
@@ -30,7 +25,6 @@ export const DEFAULTGROVES = [
 		region: 'TX',
 		country: 'USA',
 		postCode: '78251',
-		metro: 'San Antonio, TX',
 		founded: '2023',
 		membership: 3,
 		affiliation: [ 'AODA', 'RDNA' ],
@@ -45,11 +39,7 @@ export const DEFAULTGROVES = [
 			},
 		],
 		updated: 1681150894322,
-		coords: {
-			latitude: 29.4597,
-			longitude: -98.6555,
-			altitude: 0,
-		},
+		coords: [ 29.4597, -98.6555 ],
 	},
 	{
 		name: 'Hazel Nut Grove',
@@ -59,7 +49,6 @@ export const DEFAULTGROVES = [
 		region: 'CA',
 		country: 'USA',
 		postCode: '',
-		metro: 'Bay Area, CA',
 		founded: '1977',
 		membership: 15,
 		affiliation: [ 'NRDNA' ],
@@ -68,11 +57,7 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ ],
 		updated: 1403931600000,
-		coords: {
-			latitude: 37.3393,
-			longitude: -121.895,
-			altitude: 0,
-		},
+		coords: [ 37.3393, -121.895 ],
 	},
 	{
 		name: 'Tuatha de Danann Grove',
@@ -82,7 +67,6 @@ export const DEFAULTGROVES = [
 		region: 'CA',
 		country: 'USA',
 		postCode: '',
-		metro: '',
 		founded: '1992',
 		membership: 5,
 		affiliation: [ 'NRDNA' ],
@@ -91,11 +75,7 @@ export const DEFAULTGROVES = [
 		phone: '',
 		officers: [ ],
 		updated: 1403931600000,
-		coords: {
-			latitude: 37.6688,
-			longitude: -122.0808,
-			altitude: 0,
-		},
+		coords: [ 37.6688, -122.0808 ],
 	},
 	{
 		name: 'Grove of the Other Gods, ADF',
@@ -105,7 +85,6 @@ export const DEFAULTGROVES = [
 		region: 'NJ',
 		country: 'USA',
 		postCode: '08901',
-		metro: '',
 		founded: '',
 		membership: '',
 		affiliation: [ 'ADF' ],
@@ -120,11 +99,7 @@ export const DEFAULTGROVES = [
 			},
 		],
 		updated: 1684779559148,
-		coords: {
-			latitude: 40.4970,
-			longitude: -74.4500,
-			altitude: 0,
-		},
+		coords: [ 40.4970, -74.4500 ],
 	},
 ]
 
@@ -133,7 +108,6 @@ export const DEFAULTDRUIDS = [
 		name: 'Wraidd Skywalker',
 		id: '992419c7-e4e6-452f-9bb2-87733014cfde',
 		affiliation: [ 'AODA', 'RDNA', 'RDG', 'NoD' ],
-		metro: 'San Antonio, TX',
 		address: '10730 Potranco Rd Ste 122-208',
 		city: 'San Antonio',
 		region: 'TX',
@@ -144,10 +118,10 @@ export const DEFAULTDRUIDS = [
 		web: 'https://moonbeam.town/@wraidd',
 		phone: '+1 (585) 708-9501',
 		updated: 1681150894322,
-		coords: {
-			latitude: 29.4241,
-			longitude: -98.4936,
-			altitude: 0,
+		coords: [ 29.4241, -98.4936 ],
+		serviceArea: {
+			description: 'Within 100 miles of San Antonio, TX',
+			shapeFile: '',
 		},
 	},
 ]

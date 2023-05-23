@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 
 export default function GroveMap() {
 	const { filteredList } = useSelector(S => S.grovelist);
-	const { mapLat, mapLng, zoom } = useSelector(S => S.mapctl);
+	//const { mapLat, mapLng, zoom } = useSelector(S => S.mapctl);
+	const { myCoords } = useSelector(S => S.mydata);
+	const zoom = 4;
 
 	return (
-		<Map defaultCenter={[ mapLat, mapLng ]} defaultZoom={zoom}>
+		<Map defaultCenter={myCoords} defaultZoom={zoom}>
 			{
 				filteredList.map(data => {
 					// it doesn't work if I break this out into a local
@@ -15,7 +17,7 @@ export default function GroveMap() {
 
 					const [ grove, distance ] = data;
 					const org = grove.affiliation[0] ?? 'None';
-					const { latitude, longitude } = grove.coords;
+					//const [ latitude, longitude ] = grove.coords;
 
 					let color;
 
@@ -31,7 +33,7 @@ export default function GroveMap() {
 					return (
 						<Marker
 							width={30}
-							anchor={[ latitude, longitude ]}
+							anchor={grove.coords}
 							color={color}
 						/>
 					);

@@ -4,8 +4,11 @@ import {
 	Row,
 	Col
 } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 export default function GroveCard({ grove }) {
+	console.log('GroveCard: received grove', grove);
+	const [ groveData, distance ] = grove;
 	const {
 		name,
 		id,
@@ -23,10 +26,7 @@ export default function GroveCard({ grove }) {
 		officers,
 		coords,
 		updated,
-		distance
-	} = grove;
-
-	console.log('Received grove with id:', id);
+	} = groveData;
 
 	return (
 		<Accordion.Item eventKey={id}>
@@ -54,7 +54,12 @@ export default function GroveCard({ grove }) {
 			</Accordion.Body>
 		</Accordion.Item>
 	);
-/*
+}
+
+
+
+/* OLD CODE
+
 	return (
 
 		<Container>
@@ -66,5 +71,4 @@ export default function GroveCard({ grove }) {
 		</Container>
 	);
 */
-}
 

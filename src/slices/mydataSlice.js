@@ -11,6 +11,7 @@ const mydataSlice = createSlice({
 	reducers: {
 		setMyLocationString: (mState, action) => mState.myLocationString = action.payload,
 		setMyCoords: (mState, action) => mState.myCoords = action.payload,
+		resetMyData: (mState, action) => initialState,
 
 	},
 	extraReducers: {
@@ -22,5 +23,6 @@ export const mydataReducer = mydataSlice.reducer;
 
 export const {
 	setMyLocationString,
-	setMyCoords
+	setMyCoords,
+	resetMyData
 } = mydataSlice.actions;

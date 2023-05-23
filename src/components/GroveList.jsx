@@ -2,40 +2,11 @@ import { DEFAULTGROVES } from '../data/DEFAULT.js';
 import { Accordion, Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import GroveCard from './GroveCard.jsx';
-
+import { useSelector } from 'react-redux';
 
 export default function GroveList() {
-	const [ loc, setLoc ] = useState('');
-	const [ groveList, setGroveList ] = useState([]);
-	const [ orgFilters, setOrgFilters ] = useState({
-		aoda: true,
-		adf: true,
-		rdna: true,
-		rdg: true,
-		obod: true,
-		bdo: true,
-		dana: true
-	});
-
-	useEffect(_ => setGroveList(DEFAULTGROVES), []);
-
-	useEffect(_ => {
-		// Change groveList based on filters and location and sort
-		// based on distance
-		// NYI
-	}, [ loc, orgFilters ]);
-
-	const toggleOrg = org => {
-		setOrgFilters({
-			...orgFilters,
-			[org]: !orgFilters[org]
-		});
-	};
-
-	const OrgChip = org => {
-
-
-	}
+	const { filteredList } = useSelector(S => S.grovelist);
+	const { orgFilter } = useSelector(S => S.options);
 
 	return (
 		<Accordion flush alwaysOpen defaultActiveKey={[]}>
@@ -48,7 +19,7 @@ export default function GroveList() {
 				</Accordion.Body>
 			</Accordion.Item>
 			{
-				groveList.map(grove => <GroveCard grove={grove} />)
+				filteredList.map(grove => <GroveCard grove={grove} />)
 			}
 		</Accordion>
 	);
@@ -122,5 +93,37 @@ export default function GroveList() {
 			}
 		</Accordion>
 	);
+
+	const [ loc, setLoc ] = useState('');
+	const [ groveList, setGroveList ] = useState([]);
+	const [ orgFilters, setOrgFilters ] = useState({
+		aoda: true,
+		adf: true,
+		rdna: true,
+		rdg: true,
+		obod: true,
+		bdo: true,
+		dana: true
+	});
+
+	useEffect(_ => setGroveList(DEFAULTGROVES), []);
+
+	useEffect(_ => {
+		// Change groveList based on filters and location and sort
+		// based on distance
+		// NYI
+	}, [ loc, orgFilters ]);
+
+	const toggleOrg = org => {
+		setOrgFilters({
+			...orgFilters,
+			[org]: !orgFilters[org]
+		});
+	};
+
+	const OrgChip = org => {
+
+
+	}
 
 */

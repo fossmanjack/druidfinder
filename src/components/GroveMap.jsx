@@ -28,13 +28,12 @@ export default function GroveMap() {
 						default: color = 'grey';
 					};
 
-					console.log('GroveMarker:', org, color, grove.coords);
-
 					return (
 						<Marker
 							width={30}
 							anchor={grove.coords}
 							color={color}
+							key={grove.id}
 						/>
 					);
 				})

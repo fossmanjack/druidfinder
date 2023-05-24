@@ -3,6 +3,7 @@ import { Accordion, Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import GroveCard from './GroveCard.jsx';
 import { useSelector } from 'react-redux';
+import SearchBar from '../components/SearchBar';
 
 export default function GroveList() {
 	const { filteredList } = useSelector(S => S.grovelist);
@@ -12,14 +13,14 @@ export default function GroveList() {
 		<Accordion flush alwaysOpen defaultActiveKey={[]}>
 			<Accordion.Item eventKey='accordionHeader'>
 				<Accordion.Header>
-					Search and Filters
+					<SearchBar />
 				</Accordion.Header>
 				<Accordion.Body>
 					Filters!
 				</Accordion.Body>
 			</Accordion.Item>
 			{
-				filteredList.map(grove => <GroveCard grove={grove} />)
+				filteredList.map(grove => <GroveCard grove={grove} key={grove[0].id} />)
 			}
 		</Accordion>
 	);

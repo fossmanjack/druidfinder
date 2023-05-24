@@ -5,7 +5,7 @@ export default function getDistance(myCoords, destCoords, units = 'miles') {
 	// and calculates the distance between them in miles (for
 	// now -- will implement km later)
 
-	console.log('getDistance:', myCoords, destCoords);
+//	console.log('getDistance:', myCoords, destCoords);
 
 	const toRad = val => val * Math.PI / 180; // convert degrees to radians
 	const radius = units === 'miles' ? 3959 : 6371;

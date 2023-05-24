@@ -7,7 +7,6 @@ import {
 import { useSelector } from 'react-redux';
 
 export default function GroveCard({ grove }) {
-	console.log('GroveCard: received grove', grove);
 	const [ groveData, distance ] = grove;
 	const {
 		name,

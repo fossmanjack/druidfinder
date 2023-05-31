@@ -1,13 +1,31 @@
 import { DEFAULTGROVES } from '../data/DEFAULT.js';
-import { Accordion, Container, Row, Col } from 'react-bootstrap';
+import { Accordion, Button, Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import GroveCard from './GroveCard.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from '../components/SearchBar';
+import { toggleOrgFilter } from '../slices/optionsSlice';
 
 export default function GroveList() {
-	const { filteredList } = useSelector(S => S.grovelist);
+	const { filteredList, orgList } = useSelector(S => S.grovelist);
 	const { orgFilter } = useSelector(S => S.options);
+
+	const orgListKeys = Object.keys(orgList);
+	const dispatch = useDispatch();
+
+	const OrgTag = props => {
+		const { orgTag } = props;
+
+		return (
+			<Button
+				variant={orgFilter.includes(orgTag) ? 'primary' : 'secondary'}
+				onClick={_ => dispatch(toggleOrgFilter(orgTag))}
+				style={{ width: '40%', margin: 1 }}
+			>
+				{orgTag}
+			</Button>
+		);
+	};
 
 	return (
 		<Accordion flush alwaysOpen defaultActiveKey={[]}>
@@ -16,7 +34,9 @@ export default function GroveList() {
 					<SearchBar />
 				</Accordion.Header>
 				<Accordion.Body>
-					Filters!
+					{
+						orgListKeys.map(org => <OrgTag orgTag={org} key={org} />)
+					}
 				</Accordion.Body>
 			</Accordion.Item>
 			{

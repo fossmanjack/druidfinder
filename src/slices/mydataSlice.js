@@ -10,7 +10,12 @@ const mydataSlice = createSlice({
 	initialState,
 	reducers: {
 		setMyLocationString: (mState, action) => mState.myLocationString = action.payload,
-		setMyCoords: (mState, action) => mState.myCoords = action.payload,
+		setMyCoords: (mState, action) => {
+			return {
+				...mState,
+				myCoords: action.payload
+			};
+		},
 		resetMyData: (mState, action) => initialState,
 
 	},

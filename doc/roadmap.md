@@ -2,17 +2,18 @@
 
 - [x] Render map
 - [x] Render list of groves
-- [ ] Render grove card
-- [ ] Render search bar
-- [ ] Accept search bar input
-- [ ] Filter based on search bar input
-- [ ] Implement filters
+- [x] Render grove card
+- [x] Render search bar
+- [x] Accept search bar input
+- [x] Filter based on search bar input
+- [x] Implement filters
 - [ ] Grove info modal
 - [ ] Clickable map markers (clicking brings up modal)
 - [ ] Clickable add-a-grove form
 - [ ] Header
 - [ ] Footer
 - [ ] SVGs for each org
+- [ ] Capture user location to populate initial myData
 
 ## Back end
 

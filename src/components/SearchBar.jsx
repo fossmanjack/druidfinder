@@ -13,14 +13,17 @@ export default function SearchBar() {
 
 	// options for API fetch -- deprecated once we get a thunk in place
 	const fetchOpts = {
-		mode: 'same-origin',
 	};
+
+	const APIKEY = '3f46e39cd45519b4532a9e3fc26f1f44';
+	const APIURL = `https://geocode.maps.co/search?q={${input}}`;
+	//const APIURL = `https://api.positionstack.com/v1/forward?access_key=${APIKEY}&query=${input}`
 
 	// Async function to fetch coordinates from the input string using geocode.maps.co public API
 	const fetchMyCoords = async _ => {
 		console.log('fetchMyCoords input', input);
 		try {
-			const response = await fetch(`http://geocode.maps.co/search?q=${input}`, fetchOpts);
+			const response = await fetch(APIURL, fetchOpts);
 			const jsonData = await response.json();
 
 			console.log('SearchBar: received jsonData', jsonData);

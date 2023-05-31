@@ -25,7 +25,7 @@ import getDistance from '../utils/getDistance';
 export default function Main() {
 	const { groveList } = useSelector(S => S.grovelist);
 	const { myCoords } = useSelector(S => S.mydata);
-	const { orgFilter } = useSelector(S => S.options);
+	const { orgFilter, units } = useSelector(S => S.options);
 	const dispatch = useDispatch();
 
 	// We can't use the list data directly because we want to sort by distance
@@ -37,19 +37,19 @@ export default function Main() {
 		const sortList = [ ];
 
 		for(const grove of groveList) {
-			const distance = getDistance(myCoords, grove.coords);
+			const distance = getDistance(myCoords, grove.coords, units);
 			sortList.push([ grove, distance ]);
 		}
 
 		// Since affiliation is an array and the orgs included is also an array,
 		// we can filter out anything that doesn't share a match using array.some()
-		sortList.filter(data => data[0].affiliation.some(org => orgFilter.includes(org)));
+		const retList = sortList.filter(data => data[0].affiliation.some(org => orgFilter.includes(org)));
 
 		// Sort by distance, ascending
-		sortList.sort((a, b) => a[1] - b[1]);
+		retList.sort((a, b) => a[1] - b[1]);
 
 		// Store the list built in Redux
-		dispatch(GL.setFilteredList(sortList));
+		dispatch(GL.setFilteredList(retList));
 	};
 
 	// Every time location or filters change, rebuild list

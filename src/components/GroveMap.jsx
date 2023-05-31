@@ -38,6 +38,12 @@ export default function GroveMap() {
 					);
 				})
 			}
+			<Marker
+				width={30}
+				anchor={myCoords}
+				color='black'
+				key='myLocation'
+			/>
 		</Map>
 	);
 

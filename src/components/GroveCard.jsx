@@ -7,6 +7,7 @@ import {
 import { useSelector } from 'react-redux';
 
 export default function GroveCard({ grove }) {
+	const { units } = useSelector(S => S.options);
 	const [ groveData, distance ] = grove;
 	const {
 		name,
@@ -27,6 +28,26 @@ export default function GroveCard({ grove }) {
 		updated,
 	} = groveData;
 
+	const addressString = _ => {
+		let output = '';
+
+		if(city) output += `${city}`;
+		if(region) {
+			if(output) output += `, ${region}`;
+			else output += `${region}`;
+		};
+		if(postCode) {
+			if(output) output += `, ${postCode}`;
+			else output += `${postCode}`;
+		};
+		if(country) {
+			if(output) output += `, ${country}`;
+			else output += `${country}`;
+		};
+
+		return output;
+	}
+
 	return (
 		<Accordion.Item eventKey={id}>
 			<Accordion.Header>
@@ -41,12 +62,12 @@ export default function GroveCard({ grove }) {
 					</Row>
 					<Row>
 						<Col>
-							{city}, {region}, {postCode}, {country}
+							{addressString()}
 						</Col>
 					</Row>
 					<Row>
 						<Col>
-							{distance}
+							Distance: {distance} {units === 'imperial' ? 'mi' : 'km'}
 						</Col>
 					</Row>
 				</Container>

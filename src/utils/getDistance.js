@@ -1,6 +1,6 @@
 import sigFig from '../utils/sigFig';
 
-export default function getDistance(myCoords, destCoords, units = 'miles') {
+export default function getDistance(myCoords, destCoords, units = 'imperial') {
 	// This function accepts two coordinate sets as arguments
 	// and calculates the distance between them in miles (for
 	// now -- will implement km later)
@@ -8,7 +8,7 @@ export default function getDistance(myCoords, destCoords, units = 'miles') {
 //	console.log('getDistance:', myCoords, destCoords);
 
 	const toRad = val => val * Math.PI / 180; // convert degrees to radians
-	const radius = units === 'miles' ? 3959 : 6371;
+	const radius = units === 'imperial' ? 3959 : 6371;
 
 	const [ mLat, mLng ] = myCoords;
 	const [ dLat, dLng ] = destCoords;

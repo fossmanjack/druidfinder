@@ -14,6 +14,7 @@
 - [ ] Footer
 - [ ] SVGs for each org
 - [ ] Capture user location to populate initial myData
+- [ ] Services and service area
 
 ## Back end
 
@@ -37,3 +38,21 @@
 - Redux should fetch and hold the grove and druid lists using thunks
 - Redux should also hold current location data
 - Redux should also hold filtered lists of both of those in an array [ dataOb, distance ]
+
+## Services Offered
+
+- Blessings (land and/or people)
+- Weddings
+- Funerals
+- Naming/baptism
+- Public high day services
+- Public full moon/new moon services
+- Public weekly services
+- Initiations
+- Ordinations
+- Readings
+- Reiki
+- Permaculture
+- Feng shui
+- Herbalism
+- Talismans

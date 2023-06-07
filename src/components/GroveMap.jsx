@@ -1,9 +1,10 @@
 import { Map, Marker } from 'pigeon-maps';
 import { useSelector } from 'react-redux';
+import DruidSigilIcon from '../components/DruidSigilIcon';
 
 
 export default function GroveMap() {
-	const { filteredList } = useSelector(S => S.grovelist);
+	const { filteredList, orgList } = useSelector(S => S.grovelist);
 	//const { mapLat, mapLng, zoom } = useSelector(S => S.mapctl);
 	const { myCoords } = useSelector(S => S.mydata);
 	const zoom = 4;
@@ -18,16 +19,29 @@ export default function GroveMap() {
 					const [ grove, distance ] = data;
 					const org = grove.affiliation[0] ?? 'None';
 					//const [ latitude, longitude ] = grove.coords;
+					const { color } = orgList[org] ?? 'gray';
 
-					let color;
 
+/*
 					switch(org) {
 						case 'AODA': color = 'green'; break;
 						case 'RDNA': color = 'yellow'; break;
 						case 'ADF': color = 'red'; break;
 						default: color = 'grey';
 					};
+*/
 
+/*
+					return (
+						<Marker
+							width={30}
+							anchor={grove.coords}
+							color={color}
+							key={grove.id}
+						>
+							<DruidSigilIcon size={30} color={color} />
+						</Marker>
+*/
 					return (
 						<Marker
 							width={30}
@@ -43,6 +57,7 @@ export default function GroveMap() {
 				anchor={myCoords}
 				color='black'
 				key='myLocation'
+				onClick={_ => console.log('MyMarker onClick:', myCoords)}
 			/>
 		</Map>
 	);

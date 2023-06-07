@@ -11,9 +11,12 @@ const mydataSlice = createSlice({
 	reducers: {
 		setMyLocationString: (mState, action) => mState.myLocationString = action.payload,
 		setMyCoords: (mState, action) => {
+			console.log('myDataSlice: setMyCoords:', action.payload);
+			const [ inputLat, inputLon ] = action.payload;
+
 			return {
 				...mState,
-				myCoords: action.payload
+				myCoords: [ parseFloat(inputLat), parseFloat(inputLon) ]
 			};
 		},
 		resetMyData: (mState, action) => initialState,
